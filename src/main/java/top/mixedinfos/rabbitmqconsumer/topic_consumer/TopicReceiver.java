@@ -1,0 +1,29 @@
+package top.mixedinfos.rabbitmqconsumer.topic_consumer;
+
+import org.springframework.amqp.core.ExchangeTypes;
+import org.springframework.amqp.rabbit.annotation.*;
+import org.springframework.stereotype.Component;
+
+@Component
+@RabbitListener(
+        bindings = @QueueBinding(
+                value = @Queue(
+                    value = "queues.topic"
+                        ,
+                    autoDelete = "false" //此模式为true的时候会随着应用的退出，销毁队列
+                ),
+                exchange = @Exchange(
+                        value = "${messageQueue.exchangeTopicName}",
+                        type = ExchangeTypes.TOPIC
+                ),
+                key = "mytopickey.*"
+        )
+)
+public class TopicReceiver {
+
+    @RabbitHandler
+    public void directMessageConsumer(String msg){
+        System.out.println("Topic-All模式接受的消息为："+msg);
+    }
+
+}
