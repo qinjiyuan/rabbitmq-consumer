@@ -5,7 +5,7 @@ spring:
   application:
     name: rabbitmq-consumer
   rabbitmq:
-    host: 10.15.1.8
+    host: 10.0.75.1
     port: 5672
     username: qinjiyuan
     password: Radiant123
@@ -14,7 +14,7 @@ spring:
 messageQueue:
   exchangeDirectName: amq.direct
   exchangeTopicName: amq.topic
-  exchangeFanoutName: myfanout
+  exchangeFanoutName: amq.fanout
   bindingDirectKey: mydirectkey
   bindingTopicKey: mytopickey.*
   bindingFanoutKey: myfanoutkey
@@ -23,3 +23,4 @@ messageQueue:
 queues:
   direct: direct.info
   topic: topic.info
+  fanout: fanout.info
