@@ -9,6 +9,10 @@ spring:
     port: 5672
     username: qinjiyuan
     password: Radiant123
+    listener:
+      simple:
+        acknowledge-mode: Auto #自动ack进行订单的校验，还有其他的两种类型 Manual None
+
 
 
 messageQueue:
