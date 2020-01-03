@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @RabbitListener(
         bindings = @QueueBinding(
                 value = @Queue(
-                    value = "queues.direct"
+                    value = "value = ${queues.direct.error}"
 //                        ,
 //                    autoDelete = "true" //此模式为true的时候会随着应用的退出，销毁队列
                 ),
@@ -16,10 +16,10 @@ import org.springframework.stereotype.Component;
                         value = "${messageQueue.exchangeDirectName}",
                         type = ExchangeTypes.DIRECT
                 ),
-                key = "${messageQueue.bindingDirectKey}"
+                key = "${queues.direct.error-routing-key}"
         )
 )
-public class DirectReceiver {
+public class DirectErrorReceiver {
 
     @RabbitHandler
     public void directMessageConsumer(String msg){

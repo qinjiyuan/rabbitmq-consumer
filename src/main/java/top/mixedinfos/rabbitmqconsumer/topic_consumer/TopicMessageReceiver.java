@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 )
 public class TopicMessageReceiver {
 
-    @RabbitHandler
+//    @RabbitHandler
     public void directMessageConsumer(String msg){
         System.out.println("TopicMessageReceiver模式接受的消息为："+msg);
     }

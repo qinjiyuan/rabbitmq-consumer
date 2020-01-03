@@ -25,6 +25,13 @@ messageQueue:
 
 
 queues:
-  direct: direct.info
+  direct:
+    info: direct.info
+    error: direct.error
+    info-routing-key: direct-info-key
+    error-routing-key: direct-error-key
+
+
+
   topic: topic.info
   fanout: fanout.info
