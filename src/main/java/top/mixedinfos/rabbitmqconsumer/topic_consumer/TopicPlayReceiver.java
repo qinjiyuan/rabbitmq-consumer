@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
                 value = @Queue(
                     value = "queues.topic"
                         ,
-                    autoDelete = "false" //此模式为true的时候会随着应用的退出，销毁队列
+                    autoDelete = "true" //此模式为true的时候会随着应用的退出，销毁队列
                 ),
                 exchange = @Exchange(
                         value = "${messageQueue.exchangeTopicName}",
@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 )
 public class TopicPlayReceiver {
 
-//    @RabbitHandler
+    @RabbitHandler
     public void directMessageConsumer(String msg){
         System.out.println("TopicPlayReceiver模式接受的消息为："+msg);
     }
